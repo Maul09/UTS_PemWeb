@@ -16,4 +16,14 @@ class Fakultas extends Model
         'jurusan', 
     ];
 
+    public function dekans()
+    {
+        return $this->hasMany(Dekan::class);
+    }
+
+    // Relasi ke jurusan (kalau sudah ada)
+    public function jurusans()
+    {
+        return $this->hasMany(Jurusan::class);
+    }
 }

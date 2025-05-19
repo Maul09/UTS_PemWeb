@@ -17,7 +17,7 @@ class FakultasResource extends Resource
 {
     protected static ?string $model = Fakultas::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office';
 
     public static function form(Form $form): Form
     {
@@ -65,18 +65,23 @@ class FakultasResource extends Resource
                     ->searchable()
                     ->sortable(),
 
-                Tables\Columns\TextColumn::make('kode_fakultas')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('jurusan')
+                    ->label('Jurusan')
+                    ->limit(30),  
 
                 Tables\Columns\TextColumn::make('dekan')
                     ->limit(20),
 
-                    Tables\Columns\TextColumn::make('jurusan')
-                    ->label('Jurusan')
-                    ->limit(30),                
+                Tables\Columns\TextColumn::make('kode_fakultas')
+                    ->searchable(),
 
                 Tables\Columns\TextColumn::make('tahun_berdiri')
                     ->label('Tahun'),
+
+                Tables\Columns\TextColumn::make('deskripsi')
+                    ->label('Deskripsi')
+                    ->limit(40)
+                    ->tooltip(fn ($record) => $record->deskripsi),                
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->since()
